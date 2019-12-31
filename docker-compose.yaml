@@ -6,17 +6,18 @@ services:
     container_name: letsencrypt
     volumes:
       - /opt/appdata/letsencrypt/config:/config
+      - ./blog.conf:/config/nginx/site-confs/default
     ports:
       - 80:80
       - 443:443
     networks:
       - internet
     environment:
-      - PUID=1313
-      - PGID=1313
-      - EMAIL=email@gmail.com
-      - URL=domain.com
-      - SUBDOMAINS=blog
+      - PUID=1313 # Change
+      - PGID=1313 # Change
+      - EMAIL=email@gmail.com # Change
+      - URL=domain.com # Change
+      - SUBDOMAINS=blog # Change
       - ONLY_SUBDOMAINS=true
       - DHLEVEL=4096
       - TZ=Europe/London
@@ -36,5 +37,5 @@ services:
       - internet
     environment:
       - NODE_ENV=production
-      - url=https://blog.domain.com
+      - url=https://blog.domain.com # Change
     restart: unless-stopped
